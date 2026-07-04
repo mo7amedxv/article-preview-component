@@ -121,6 +121,10 @@ body {
 }
 .card-avatar img {
   border-radius: var(--radius-full);
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 .card-image {
   height: 100%;
@@ -131,6 +135,10 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: left;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 .card-title {
   font-size: var(--card-title-size);
@@ -165,6 +173,10 @@ body {
   background-color: var(--color-surface);
   justify-self: flex-end;
   position: relative;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 
 .share-button .arrow {
@@ -172,6 +184,10 @@ body {
   width: 26px;
   aspect-ratio: 1/1;
   height: auto;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 .share-menu {
   bottom: calc(100% + 18px);
