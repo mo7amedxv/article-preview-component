@@ -5,54 +5,41 @@
   --color-surface: hsl(210, 46%, 95%);
   --color-background: hsl(0, 0%, 100%);
   --attribution: hsl(228, 45%, 44%);
+
   --font-family: "Manrope", sans-serif;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
-  --font-size-sm: 0.8125rem;
-  --font-size-base: 1rem;
-  --card-title-size: 2.18rem;
-  --font-size-lg: 1.25rem;
+
+  --font-size-sm: clamp(0.75rem, 0.7083rem + 0.1667vw, 0.8125rem);
+  --font-size-base: clamp(0.875rem, 0.7917rem + 0.3333vw, 1rem);
+  --card-title-size: clamp(1.5rem, 1.0467rem + 1.8133vw, 2.18rem);
+  --font-size-lg: clamp(1rem, 0.8333rem + 0.6667vw, 1.25rem);
+
   --line-height-tight: 1.3;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.7;
-  --letter-spacing-wide: 0.35em;
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 0.75rem;
-  --spacing-lg: 1rem;
-  --spacing-xl: 1.25rem;
-  --spacing-2xl: 1.5rem;
-  --spacing-3xl: 2rem;
-  --spacing-4xl: 2.5rem;
-  --spacing-5xl: 3rem;
-  --spacing-6xl: 4rem;
+
+  --letter-spacing-wide: clamp(0.25em, 0.1833em + 0.2667vw, 0.35em);
+
+  --spacing-xs: clamp(0.2rem, 0.1667rem + 0.1333vw, 0.25rem);
+  --spacing-sm: clamp(0.4rem, 0.3333rem + 0.2667vw, 0.5rem);
+  --spacing-md: clamp(0.6rem, 0.5rem + 0.4vw, 0.75rem);
+  --spacing-lg: clamp(0.75rem, 0.5833rem + 0.6667vw, 1rem);
+  --spacing-xl: clamp(1rem, 0.8333rem + 0.6667vw, 1.25rem);
+  --spacing-2xl: clamp(1.125rem, 0.875rem + 1vw, 1.5rem);
+  --spacing-3xl: clamp(1.5rem, 1.1667rem + 1.3333vw, 2rem);
+  --spacing-4xl: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  --spacing-5xl: clamp(2rem, 1.3333rem + 2.6667vw, 3rem);
+  --spacing-6xl: clamp(2rem, 0.6667rem + 5.3333vw, 4rem);
+
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
-  --radius-lg: 1rem;
+  --radius-lg: clamp(0.75rem, 0.5833rem + 0.6667vw, 1rem);
   --radius-full: 50%;
+
   --shadow-card: 0 20px 40px rgba(72, 85, 106, 0.18);
   --shadow-popup: 0 10px 30px rgba(72, 85, 106, 0.25);
   --transition-fast: 250ms ease;
-}
-@media screen and (max-width: 1000px) {
-  :root {
-    --font-size-sm: 0.75rem;
-    --font-size-base: 0.875rem;
-    --card-title-size: 1.5rem;
-    --font-size-lg: 1rem;
-    --letter-spacing-wide: 0.25em;
-    --spacing-xs: 0.2rem;
-    --spacing-sm: 0.4rem;
-    --spacing-md: 0.6rem;
-    --spacing-lg: 0.75rem;
-    --spacing-xl: 1rem;
-    --spacing-2xl: 1.125rem;
-    --spacing-3xl: 1.5rem;
-    --spacing-4xl: 1.75rem;
-    --spacing-5xl: 2rem;
-    --spacing-6xl: 2rem;
-    --radius-lg: 0.75rem;
-  }
 }
 @font-face {
   font-family: "Manrope";
@@ -97,7 +84,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--spacing-6xl);
 }
 .card {
   display: grid;
@@ -188,14 +175,14 @@ body {
 }
 .share-menu {
   bottom: calc(100% + 18px);
-  right: -124px;
+  right: -100px;
   left: auto;
   transform: none;
-  padding: var(--spacing-xl) var(--spacing-4xl);
+  padding: var(--spacing-xl) var(--spacing-2xl);
   z-index: 99;
   position: absolute;
   background-color: var(--color-primary);
-  width: 300px;
+  width: 250px;
   display: none;
   align-items: center;
   justify-content: space-between;
@@ -252,18 +239,24 @@ body {
 .share-button.active {
   background-color: var(--color-primary);
 }
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 899px) {
   .share-menu:after {
     display: none;
   }
+  .card-content {
+    padding: var(--spacing-3xl);
+  }
+  .container {
+    padding: var(--spacing-2xl);
+  }
   .share-menu {
     position: absolute;
-    width: calc(100% + (var(--spacing-6xl) * 2));
-    top: calc(78% - var(--spacing-6xl));
-    border-radius: 0 0 var(--radius-lg) 0;
+    width: calc(100% + (var(--spacing-3xl) * 2));
+    top: calc(0% + var(--spacing-2xl));
     left: 50%;
-    transform: translateX(-50%) translateY(0);
-    height: calc(100% + var(--spacing-6xl));
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    transform: translateX(-50%) translateY(-20%);
+    height: calc(100% + var(--spacing-3xl));
   }
   .author-details {
     padding-block: var(--spacing-lg);
@@ -288,11 +281,6 @@ body {
   .share-button {
     position: static;
   }
-  .popup {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 1000px) {
   .card {
     grid-template-columns: 1fr;
   }
@@ -305,15 +293,7 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .share-menu {
-    position: absolute;
-    width: calc(100% + (var(--spacing-6xl) * 2));
-    bottom: calc(0% - var(--spacing-6xl));
-    left: 50%;
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    transform: translateX(-50%) translateY(-20%);
-    height: 150%;
-  }
+
   .author-details {
     padding-block: var(--spacing-lg);
   }
@@ -339,36 +319,14 @@ body {
   .popup {
     width: 50%;
   }
+  .card-avatar {
+    width: 50px;
+    height: 50px;
+  }
 }
 @media screen and (max-width: 420px) {
   .popup {
     width: 70%;
-  }
-  .card-content {
-    padding: var(--spacing-6xl);
-  }
-
-  :root {
-    --font-size-sm: 0.5rem;
-    --font-size-base: 0.7rem;
-    --card-title-size: 1.1rem;
-    --font-size-lg: 0.9rem;
-    --letter-spacing-wide: 0.2em;
-    --spacing-xs: 0.15rem;
-    --spacing-sm: 0.3rem;
-    --spacing-md: 0.4rem;
-    --spacing-lg: 0.6rem;
-    --spacing-xl: 0.5rem;
-    --spacing-2xl: 0.75rem;
-    --spacing-3xl: 1.2rem;
-    --spacing-4xl: 1.5rem;
-    --spacing-5xl: 1.6rem;
-    --spacing-6xl: 1.7rem;
-    --radius-lg: 0.75rem;
-  }
-  .card-avatar {
-    width: 50px;
-    height: 50px;
   }
 }
 .popup {
@@ -376,7 +334,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 900px) {
   .popup {
     width: 100%;
   }
